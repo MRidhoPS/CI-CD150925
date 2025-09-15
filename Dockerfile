@@ -1,10 +1,10 @@
 # stage 1 builder
 FROM node:18-alpine AS builder
-Workdir /app
-copy package*json.json ./
-run npm install
-copy . .
-run npm run build
+WORKDIR /app
+COPY package*json.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 
 # stage 2 production
 FROM node:18-alpine
