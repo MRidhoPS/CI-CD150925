@@ -11,7 +11,7 @@ provider "docker" {}
 
 resource "docker_image" "nextapp" {
     name = "mridhophs/my-next-app:latest"
-    kepp_locally = false
+    keep_locally = false
 }
 
 resource "docker_container" "nextapp" {

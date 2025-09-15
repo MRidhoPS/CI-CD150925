@@ -1,5 +1,5 @@
 # stage 1 builder
-FROM node:18-alphine AS builder
+FROM node:18-alpine AS builder
 Workdir /app
 copy package*json.json ./
 run npm install
@@ -7,7 +7,7 @@ copy . .
 run npm run build
 
 # stage 2 production
-FROM node:18-alphine
+FROM node:18-alpine
 WORKDIR /app
 COPY --from=builder /app/package*.json ./
 RUN npm install --only=production
