@@ -1,7 +1,7 @@
 name: PIPELINE GITHUB - DOCKER - TERRAFORM
 
 on:
-  pushed:
+  push:
     branches:
       - "main"
       - "dev"
