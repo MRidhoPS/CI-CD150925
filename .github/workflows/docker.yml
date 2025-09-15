@@ -19,8 +19,9 @@ jobs:
           username: ${{secrets.DOCKER_USERNAME}}
           password: ${{secrets.DOCKER_PASSWORD}}
 
-      - name: build and push
+      - name: Build and push
         uses: docker/build-push-action@v3
         with:
           push: true
-          tage: mridhophs/my-next-app:${{github.ref_name}}
+          tags: mridhophs/my-next-app:${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
+
