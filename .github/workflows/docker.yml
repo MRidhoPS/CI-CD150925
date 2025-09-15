@@ -1,0 +1,26 @@
+name: PIPELINE GITHUB - DOCKER - TERRAFORM
+
+on:
+  pushed:
+    branches:
+      - "main"
+      - "dev"
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to docker hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{secrets.DOCKER_USERNAME}}
+          password: ${{secrets.DOCKER_PASSWORD}}
+
+      - name: build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tage: mridhophs/my-next-app:${{github.ref_name}}
